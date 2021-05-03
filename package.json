@@ -1,0 +1,23 @@
+{
+  "name": "valheim-admin-ui",
+  "version": "1.0.0",
+  "description": "Valheim Game Server Admin Web UI - VAUI",
+  "main": "./app/index.mjs",
+  "scripts": {
+    "start": "node ./app/index.mjs",
+    "test": "node ./app/index.mjs --enc",
+    "createpass": "node ./app/index.mjs --enc"
+  },
+  "author": "Nabil Redmann <repo+valheim@bananaacid.de>",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "fs-extra": "^9.1.0",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "koa-session": "^6.1.0",
+    "koa-static": "^5.0.0",
+    "node-vdf": "^0.0.3"
+  }
+}

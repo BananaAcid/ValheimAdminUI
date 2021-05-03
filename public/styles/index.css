@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+/* login */
+* {
+  box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body.login {
+  font-family: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
+  
+  /* create height to center upon */
+  height: 100vh;
+  width: 100%;
+  
+  /* center main */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  background: black url(https://placeimg.com/1000/1000/nature) center;
+  background-size: cover;
+  x-backdrop-filter: blur(1px);
+  /* smooth the pixelated upscaling ... block dialog box bluring */
+
+  color: #222;
+}
+
+
+body.login main {
+  display: block;
+  width: 50%;
+  max-width: 500px;
+  min-width: 350px;
+
+  padding: 1em;
+  margin: 2em;
+
+  border-radius: 10px;
+  position: relative;
+
+  backdrop-filter: blur(7px);
+  /* safari */
+  -webkit-backdrop-filter: blur(7px);
+  background-color: rgba(255, 255, 255, .5);
+
+  x-box-shadow: 0 0 0 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, .5);
+}
+
+body.login form {
+  transition: all 1s;
+}
+
+body.login main label {
+  display: block;
+  margin: 1.5em 0;
+  text-align: right;
+}
+
+body.login main label>* {
+  vertical-align: middle;
+}
+
+body.login main input {
+  width: calc(100% - 10em);
+  margin-left: 1em;
+
+  border: none;
+  border-radius: 0; /* yes, for iPhone */
+
+  padding: .5em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+
+body.login header {
+  font-size: 3em;
+  font-weight: 200;
+}
+
+body.login button {
+  background: #4444cc;
+  padding: 1em 2em;
+  border: none;
+  border-radius: .3em;
+  color: white;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+
+body.login .cols2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 0 1em;
+  grid-template-areas: ". .";
+}
+
+
+body.login .cols2 > * {
+
+}
+
+body.login .spaced--vertical > * {
+  margin-bottom: 1em;
+}
+body.login .spaced--vertical:last-child {
+  margin-bottom: 0;
+}
+
+xmp {
+  background: rgba(255,255,255, .5);
+  backdrop-filter: blur(10px);
+
+  font-size: 10px;
+}
+
+#server_info {
+  overflow: auto;
+  margin: 1em 1em;
+  min-width: 300px;
+  max-height: calc(100vh - 2em);
+  padding: 2em;
+  position: relative;
+
+  background: rgba(255,255,255, .5);
+  backdrop-filter: blur(10px);
+}
+
+xmp#server_log { 
+  background: unset;
+  backdrop-filter: unset;
+}
+
+
+#server_update_timer {
+  float: right;
+  font-size: x-small;
+  font-weight: 100;
+}

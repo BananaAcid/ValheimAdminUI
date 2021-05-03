@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body class="login">
+    <script>
+        history.replaceState('', document.title, document.location.href.replace(/\?.+/g, '')); // clean up `?logout`
+    </script>
+    <main>
+        <form method="post">
+            <header>Valheim Server</header>
+            <label>
+                <span>Benutzername</span>
+                <input name="username" placeholder="" autofocus="" autocorrect="off" autocapitalize="none">
+            </label>
+            <label>
+                <span>Passwort</span>
+                <input type="password" name="password" current-password placeholder="">
+            </label>
+            <button type="submit" name="login" value="user">login</button>
+        </form>
+        <br />
+        <div style="font-size: small;">Valheim Server Status: <span id="server_status" style="font-weight: bold;">checking ...</span><span id="updater_status"  style="font-style: italic;"></span></div>
+    </main>
+
+
+    <script>
+        function update() {
+            fetch('/alive.json')
+                .then(response => response.json())
+                .then(data => {
+                    //console.log(data);
+                    document.querySelector('#server_status').innerText = data.running ? 'running' : 'offline';
+                })
+                .catch(e => {
+                    document.querySelector('#server_status').innerText = 'This admin interface server is not running.';
+                });
+        }
+
+        update();
+        var int = setInterval(update, 10000);
+
+    </script>
+</body>
+
+</html>

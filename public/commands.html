@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Valheim Server Commands</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body class="login">
+    <main>
+        <form method="post" class="spaced--vertical">
+            <header>Valheim Server
+                <div id="build-info" style="font-size: .8rem; font-weight: bold;">Build: <a id="build-number" href="https://steamdb.info/app/896660/patchnotes/" target="_blank">Patches</a> &mdash; Installed: <span id="build-date">---</span>
+                <br />
+                <span id="server-log-players"></span>
+                </div>
+            </header>
+            <div>Status: <span id="server_status" style="font-weight: bold;">checking ...</span><span id="updater_status"  style="font-style: italic;"></span></div>
+            
+
+            <div class="cols2">
+
+                <button type="submit" name="action" value="start">start</button>
+                <button type="submit" name="action" value="stop">stop</button>
+
+            </div>
+
+            <button type="submit" name="action" value="restart">restart</button>
+            
+            <hr>
+
+            <!-- button type="submit" name="action" value="update">update</button -->
+            
+            <button type="submit" name="action" value="updaterestart">update + restart</button>
+            
+            <hr>
+
+            <button type="submit" name="action" value="backup">create world backup<br/><small>(additional backup)</small></button>
+
+            <details collapsed><summary><small>Save info:</small></summary> <xmp id="server_backup_dates"></xmp></details>
+
+            <hr>
+
+            <button type="submit" name="action" value="logout">logout</button>
+        </form>
+    </main>
+    <div id="server_info">
+        <span id="server_update_timer"></span>
+        <label><input id="config-enable-logs" type="checkbox"> click to activate log</label>
+        <xmp id="server_log">No log yet.</xmp>
+
+        <div></div>
+    </div>
+
+    <script>
+        var noLogTimer = null;
+
+        function update() {
+            let query = document.querySelector('#config-enable-logs').checked ? '?getlog' : '';
+            fetch('/status.json' + query)
+                .then(response => response.json())
+                .then(data => {
+                    //console.log(data);
+                    document.querySelector('#server_status').innerText = data.running ? 'running' : 'offline';
+                    document.querySelector('#updater_status').innerText = data.updating ? ', updater running' : '';
+                    document.querySelector('#server_log').innerHTML = data.log || 'No log.';
+
+                    document.querySelector('#server_backup_dates').innerText = JSON.stringify(data.world, true, 2);
+
+                    document.querySelector('#build-number').innerHTML = data.currentVersion.build || '---';
+                    document.querySelector('#build-date').innerHTML = data.currentVersion.lastUpdated || '---';
+
+
+                    document.querySelector('#server-log-players').innerHTML = data.players ? 'Players: ' + data.players : '';
+                })
+                .catch(e => {
+                    document.querySelector('#server_status').innerText = 'This admin interface server is not running.';
+                    document.querySelector('#updater_status').innerText = '';
+                    document.querySelector('#server_backup_dates').innerText = '...';
+                    document.querySelector('#server-log-players').innerHTML = ''
+                });
+
+
+            if (noLogTimer === null && query) {
+                noLogTimer = 2;
+            }
+            else if (noLogTimer === 0) {
+                document.querySelector('#config-enable-logs').checked = false;
+                noLogTimer = null;
+            }
+            else if (noLogTimer > 0) {
+                noLogTimer--;
+            }
+            console.log('noLogTimer', noLogTimer);
+            document.querySelector('#server_update_timer').innerText = noLogTimer || '';
+
+        }
+
+        update();
+        var int = setInterval(update, 10000);
+
+
+        document.querySelector('#config-enable-logs').addEventListener('click', function(ev) {
+            clearInterval(int);
+            noLogTimer = null;
+            int = setInterval(update, 10000);
+            update();
+        }, false);
+
+        // fade out if any button was clicked
+        document.querySelectorAll('[name="action"]').forEach(function(el) {
+            el.addEventListener('click', function(ev) { 
+                document.querySelector('form').style.opacity = .2;
+            }, false);
+        });
+    </script>
+
+</body>
+
+</html>
