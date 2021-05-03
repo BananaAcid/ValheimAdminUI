@@ -167,3 +167,10 @@ The code is available at GitHub under the ISC license.
 - use npm's SteamCMD to download SteamCMD
 - use a setup script
 - add a script to use appcmd.exe to add to IIS / include to download iisnode
+- replace NSSM with a js-module
+- add features to the top of the readme
+- add discord support
+- add UPNP support
+- add banned list editing
+- add output of UI logs (to see update status and errors)
+- the code was a 2 day experiment - It needs a cleanup (Modules etc)
