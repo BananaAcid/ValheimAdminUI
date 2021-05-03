@@ -1,6 +1,6 @@
 {
   "name": "valheim-admin-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Valheim Game Server Admin Web UI - VAUI",
   "main": "./app/index.mjs",
   "scripts": {
@@ -9,6 +9,7 @@
     "createpass": "node ./app/index.mjs --enc"
   },
   "author": "Nabil Redmann <repo+valheim@bananaacid.de>",
+  "repository": "github:BananaAcid/ValheimAdminUI",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",

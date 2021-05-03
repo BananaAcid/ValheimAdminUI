@@ -1,19 +1,17 @@
 # Valheim Admin UI
 
-Valheim Game Server Admin Web UI - VAUI
+**Valheim Game Server Admin Web UI - VAUI**
 
-for Windows. Linux/OSX in the future.
+*for Windows. Linux/OSX in the future.*
 
-<img height="200" alt="Mobile - Login" src="https://user-images.githubusercontent.com/1894723/116934508-5c96e780-ac65-11eb-805d-9d8c2d19b08a.png">
-<img height="200" alt="Mobile - Commands" src="https://user-images.githubusercontent.com/1894723/116934550-66b8e600-ac65-11eb-9a3d-0dcee4d95c54.png">
-<img height="200" alt="Desktop - Commands" src="https://user-images.githubusercontent.com/1894723/116934525-615b9b80-ac65-11eb-8f9d-3dc1724bd3b0.png">
+<img height="200" alt="Mobile - Login" src="https://user-images.githubusercontent.com/1894723/116934508-5c96e780-ac65-11eb-805d-9d8c2d19b08a.png"><img height="200" alt="Mobile - Commands" src="https://user-images.githubusercontent.com/1894723/116934550-66b8e600-ac65-11eb-9a3d-0dcee4d95c54.png"><img height="200" alt="Desktop - Commands" src="https://user-images.githubusercontent.com/1894723/116934525-615b9b80-ac65-11eb-8f9d-3dc1724bd3b0.png">
 
 
 ## Pull requests
 
 > "Bugs ... fixes are really wanted"
 
-Any bugs about this project, feel free to report them at the issues tab.
+Any bugs about this project, feel free to report them at the [issues](https://github.com/BananaAcid/ValheimAdminUI/issues) tab.
 And you are welcome to submit pull requests.
 
 ## Modes for the Admin UI
